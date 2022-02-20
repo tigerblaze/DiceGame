@@ -11,6 +11,10 @@ public class DiceGame {
     private Rule rule;
     private int roundTime;
     private final int playerNum = 2;
+    /**
+     * [0]第幾個玩家
+     * [1]第幾回合
+     */
     private int[][] resultRecord;
 
     public abstract class Rule {
