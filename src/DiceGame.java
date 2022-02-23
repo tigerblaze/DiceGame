@@ -20,8 +20,6 @@ public class DiceGame {
     public abstract class Rule {
         /**
          * @param playerId 第幾個玩家的紀錄
-         *          * 玩家1：playerId=0
-         *          * 玩家2：playerId=1
          * @param roundTh  第幾回合
          * @param points   骰出的結果
          * @return
@@ -114,20 +112,19 @@ public class DiceGame {
          */
         @Override
         public void recordPoint(int playerId, int roundTh, int[] points) {
-            int[] record = new int[6];
+            int[] maxCountRecord = new int[6];
             for (int i = 0; i < points.length; i++) {
-                int point = points[i];
-                record[point - 1]++;
+                 int point = points[i]; //拿到骰子點數
+                 maxCountRecord[point - 1]++; //次數++(點數1->index 0)
             }
-            int max = record[0];
-            int maxPoint = 0; //出現最多次的點數
-            for (int i = 1; i < record.length; i++) {
-                if (record[i] > max) {
-                    max = record[i];
-                    maxPoint = i;
+
+            int maxCount = 0; //出現最多次數
+            for (int i = 0; i < maxCountRecord.length; i++) {
+                if (maxCountRecord[i] > maxCount) {
+                    maxCount = maxCountRecord[i];
                 }
             }
-            resultRecord[playerId][roundTh] = maxPoint;
+            resultRecord[playerId][roundTh] = maxCount;
         }
 
         /**

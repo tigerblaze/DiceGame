@@ -14,8 +14,7 @@ public class SelectCheck {
      * @param choiceEnd   選項結束
      * @return
      */
-    public static int filterSelection(int choiceStart, int choiceEnd) {
-        Scanner sc = new Scanner(System.in);
+    public static int filterSelection(int choiceStart, int choiceEnd,Scanner sc) {
         do {
             try {
                 int input = sc.nextInt();
